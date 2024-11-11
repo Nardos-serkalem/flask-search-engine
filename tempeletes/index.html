@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savoiria</title>
+    <style>
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+ }
+
+ body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+ }
+
+.search-container {
+            background: linear-gradient(to right, #000000, #033b3b);
+            border-radius: 10px;
+            padding: 40px 50px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+}
+
+.search-container:hover {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+ h1 {
+            font-size: 28px;
+            color: white;
+            margin-bottom: 20px;
+ }
+
+.search-input {
+            padding: 15px;
+            width: 100%;
+            max-width: 400px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            outline: none;
+}
+
+.search-input:focus {
+            border: 2px solid #00C6FF;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
+
+.search-button {
+            padding: 15px 25px;
+            font-size: 18px;
+            color: white;
+            background-color: #083b71;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+}
+
+.search-button:hover {
+            background-color: #0c345f;
+}
+
+.additional-info {
+            margin-top: 20px;
+            color: white;
+            font-size: 14px;
+}
+
+.additional-info a {
+            color: #00C6FF;
+            text-decoration: none;
+            transition: color 0.3s;
+}
+
+.additional-info a:hover {
+            color: #ffffff;
+}
+    </style>
+    
+</head>
+<body>
+    <div class="search-container">
+        <h1>Savoiria</h1>
+        <form action="/search" method="POST">
+            <input type="text" class="search-input" name="query" placeholder="Enter your search query..." required>
+            <button type="submit" class="search-button">Search</button>
+        </form>
+        <div class="additional-info">
+            <p>Need help? <a href="#">Learn More</a></p>
+            <p>Privacy Policy | Terms of Use</p>
+        </div>
+    </div>
+</body>
+</html>

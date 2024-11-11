@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results for "{{ query }}"</title>
+    <style>
+body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #022a2a;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+}
+
+.container {
+            width: 90%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+}
+
+ .search-box {
+            text-align: center;
+            padding: 20px;
+            background-color: #033434;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-box h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5em;
+}
+
+ .result-container {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+}
+
+.result {
+            background-color: #fff;
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #333;
+ }
+
+ .result:hover {
+            transform: translateY(-5px);
+            background-color: #f0f9ff;
+            border-color: #3498db;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+ }
+
+.result h3 {
+            font-size: 1.4rem;
+            color: #033b3b;
+            margin-bottom: 0.5em;
+}
+
+ .result p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 10px;
+ }
+.result img {
+    width: 100%; 
+    height: auto; 
+    margin-top: 10px;
+    border-radius: 8px;
+    max-height: 200px; 
+    object-fit: contain; 
+}
+
+.result a {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #ffffff;
+            background-color: #026666;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s;
+ }
+
+ .result a:hover {
+            background-color: #033b3b;
+}
+
+ .similarity {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 10px;
+ }
+
+        
+ .no-results {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #02322b;
+            margin-top: 30px;
+}
+.back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 12px 24px;
+            color: #ffffff;
+            background-color: #033b3b;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-link:hover {
+            transform: scale(1.05);
+            background-color: #026666;
+}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="search-box">
+        <h1>Search Results</h1>
+        <p>Results for: <strong>{{ query }}</strong></p>
+    </div>
+
+    <div class="result-container">
+        {% if results %}
+            {% for result in results %}
+                <div class="result">
+                    <h3>{{ result.title }}</h3>
+                    
+                    <p>{{ result.document }}</p>
+
+                    {% if result.image_url %}
+                        <img src="{{ result.image_url }}" alt="Article image">
+                    {% endif %}
+                    <span class="similarity">Relevance Score: {{ result.similarity | round(2) }}</span>
+                    <a href="{{ result.url }}" target="_blank">Read more on Wikipedia</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-results">No results found for "{{ query }}".</p>
+        {% endif %}
+        <a href="/" class="back-link">Back to Search Engine</a>
+    </div>
+</div>
+
+</body>
+</html>
