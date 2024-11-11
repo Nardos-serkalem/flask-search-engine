@@ -30,5 +30,4 @@ jobs:
 
     - name: Lint with flake8 for syntax errors
       run: |
-        # Check for syntax errors or undefined names only
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
